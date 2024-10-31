@@ -1,0 +1,46 @@
+/* Dark Background and Light Text */
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #ff5733; /* Fiery orange-red, a nod to conflict and energy */
+    text-shadow: 2px 2px 4px #000;
+}
+
+#quote-container {
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+div#quote-container > div {
+    margin-bottom: 15px;
+    border-left: 4px solid #ff5733;
+    padding-left: 10px;
+}
+
+button {
+    background-color: #ff5733;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff4530;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #555;
+}
