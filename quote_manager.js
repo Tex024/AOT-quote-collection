@@ -1,5 +1,5 @@
 // Fetch the quotes data from the JSON file
-fetch('../quotes.json')
+fetch('quotes.json')
     .then(response => response.json())
     .then(quotes => {
         const container = document.getElementById('quote-container');
