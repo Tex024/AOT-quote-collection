@@ -1,5 +1,5 @@
 function loadRandomQuotes() {
-    fetch('../quotes.json')
+    fetch('quotes.json')
         .then(response => response.json())
         .then(quotes => {
             const container = document.getElementById('quote-container');
