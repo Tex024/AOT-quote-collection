@@ -9,16 +9,16 @@ function loadRandomQuotes() {
             const shuffledQuotes = quotes.sort(() => 0.5 - Math.random());
 
             // Get up to 10 quotes from the shuffled list
-            const randomQuotes = shuffledQuotes.slice(0, 10);
+            const randomQuotes = shuffledQuotes.slice(0, 3);
 
             // Display each quote
             randomQuotes.forEach(quote => {
                 const quoteDiv = document.createElement('div');
+                quoteDiv.style.marginBottom = '20px';
+                quoteDiv.style.borderLeft = '4px solid #ff5733'; // Color for the border
+                quoteDiv.style.paddingLeft = '10px';
                 quoteDiv.style.display = 'flex'; // Use flexbox for layout
                 quoteDiv.style.alignItems = 'flex-start'; // Align items at the top
-                quoteDiv.style.marginBottom = '20px';
-                quoteDiv.style.borderLeft = '4px solid #ff5733'; // Same color as before
-                quoteDiv.style.paddingLeft = '10px';
 
                 // Create an image element for the character picture
                 const img = document.createElement('img');
@@ -30,21 +30,22 @@ function loadRandomQuotes() {
 
                 // Quote text
                 const quoteText = document.createElement('p');
-                quoteText.textContent = quote.quote;
+                quoteText.textContent = `"${quote.quote}"`;
                 quoteText.style.fontSize = '1.5em'; // Increase font size for the quote
                 quoteText.style.margin = '0'; // Remove default margin
 
                 // Quote details (author, season, episode)
-                const detailsText = document.createElement('p');
-                detailsText.textContent = `${quote.character} - Season ${quote.season}, Episode ${quote.episode}`;
-                detailsText.style.fontSize = '0.8em'; // Smaller font size
-                detailsText.style.fontStyle = 'italic'; // Italicize the details
-                detailsText.style.margin = '5px 0 0 0'; // Adjust margins
+                const detailsDiv = document.createElement('div');
+                detailsDiv.style.fontSize = '0.8em'; // Smaller font size
+                detailsDiv.style.fontStyle = 'italic'; // Italicize the details
+                detailsDiv.style.marginTop = '5px'; // Margin on top
+                detailsDiv.textContent = `${quote.character} - Season ${quote.season}, Episode ${quote.episode}`;
+
 
                 // Append elements to the quoteDiv
                 quoteDiv.appendChild(img);
                 quoteDiv.appendChild(quoteText);
-                quoteDiv.appendChild(detailsText);
+                quoteDiv.appendChild(detailsDiv);
 
                 // Append the quoteDiv to the container
                 container.appendChild(quoteDiv);
