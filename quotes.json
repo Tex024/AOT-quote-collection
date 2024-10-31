@@ -1,14 +1,62 @@
 [
     {
-        "quote": "If you win, you live. If you lose, you die. If you don't fight, you can't win!",
-        "character": "Eren Yeager",
-        "season": 1,
-        "episode": 4
+      "quote": "If you win, you live. If you lose, you die. If you don't fight, you can't win!",
+      "character": "Eren Yeager",
+      "season": 1,
+      "episode": 4
     },
     {
-        "quote": "To endure becoming a monster, you have to discard your humanity.",
-        "character": "Armin Arlert",
-        "season": 2,
-        "episode": 10
+      "quote": "Those who cannot sacrifice cannot obtain anything.",
+      "character": "Grisha Yeager",
+      "season": 1,
+      "episode": 1
+    },
+    {
+      "quote": "It's not about whether you win or lose. It's about whether you fight.",
+      "character": "Eren Yeager",
+      "season": 1,
+      "episode": 1
+    },
+    {
+      "quote": "We'll join the Survey Corps. We'll see the outside world with our own eyes.",
+      "character": "Eren Yeager",
+      "season": 1,
+      "episode": 1
+    },
+    {
+      "quote": "I'll kill every last one of them. I'll kill every last Titan.",
+      "character": "Eren Yeager",
+      "season": 1,
+      "episode": 1
+    },
+    {
+      "quote": "The world outside the walls is cruel. It's filled with suffering.",
+      "character": "Hange Zoe",
+      "season": 1,
+      "episode": 4
+    },
+    {
+      "quote": "Humans are weak. We're fragile. But we're also strong. We have the power to change the world.",
+      "character": "Armin Arlert",
+      "season": 1,
+      "episode": 4
+    },
+    {
+      "quote": "Freedom is not something you're given. It's something you take.",
+      "character": "Eren Yeager",
+      "season": 1,
+      "episode": 25
+    },
+    {
+      "quote": "I'll give everything. I'll give my life to protect my friends.",
+      "character": "Eren Yeager",
+      "season": 1,
+      "episode": 25
+    },
+    {
+      "quote": "We'll fight to the very end. We'll never give up.",
+      "character": "Eren Yeager",
+      "season": 1,
+      "episode": 25
     }
-]
+  ]
