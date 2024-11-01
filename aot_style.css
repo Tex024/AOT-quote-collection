@@ -37,7 +37,6 @@ h1, h2 {
 /* Filters Style */
 .filters {
     display: flex; /* Use flexbox for horizontal layout */
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
     justify-content: center; /* Center the filters */
     align-items: center; /* Vertically align the items */
     margin: 20px 0; /* Add margin for spacing */
