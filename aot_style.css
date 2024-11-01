@@ -1,59 +1,79 @@
-/* aot_style.css - Medieval Parchment Style with Separate Quote Boxes */
+/* General page styling */
 body {
-    font-family: 'Cinzel', serif; /* Medieval-style font */
-    background-color: #f5f0e1; /* Parchment background */
-    color: #4b3f29;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
     margin: 0;
     padding: 20px;
 }
 
 h1, h2 {
-    color: #4b3f29;
     text-align: center;
-    text-shadow: 2px 2px 5px #a39273;
+    color: #333;
 }
 
-#quote-container {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-button {
-    background-color: #8c6d52;
-    color: #fdf7e5;
-    border: 1px solid #4b3f29;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
+#refresh-button {
     display: block;
     margin: 20px auto;
-    font-weight: bold;
-}
-
-button:hover {
-    background-color: #a38967;
-}
-
-#quote-container > div {
-    background-color: #fdf7e5;
-    border: 1px solid #8c6d52;
-    border-left: 4px solid #8c6d52;
-    padding: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
     border-radius: 5px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
 }
 
-/* Style for individual quote boxes */
+#refresh-button:hover {
+    background-color: #45a049;
+}
+
+/* Styling for the featured quote section */
+#featured-quote-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.featured-quote {
+    background-color: #ffe6b3;
+    color: #333;
+    border: 2px solid #ffcc66;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    font-size: 1.2em;
+}
+
+/* Styling for the all quotes section */
+#all-quotes-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all-quote {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 800px;
+}
+
+/* General quote box styling */
 .quote-box {
     display: flex;
     align-items: flex-start;
-    padding: 10px;
-    border: 1px solid #d4af37; /* Customize this color based on the chosen theme */
-    margin-bottom: 10px;
-    background-color: #fdf7e5; /* Customize as needed */
+}
+
+.quote-box img {
     border-radius: 5px;
 }

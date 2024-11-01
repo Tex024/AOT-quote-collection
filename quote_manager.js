@@ -1,65 +1,46 @@
-// Fetch quotes and characters from JSON
+// Fetch quotes from JSON and initialize the page
 fetch('quotes.json')
     .then(response => response.json())
     .then(quotes => {
-        populateCharacterDropdown(quotes);
-        loadRandomQuotes(quotes);
-        
-        // Check for a character query in the URL
-        const params = new URLSearchParams(window.location.search);
-        const character = params.get('character');
-        if (character) {
-            loadCharacterQuotes(character, quotes);
-        }
+        displayFeaturedQuote(quotes);
+        displayAllQuotes(quotes);
+
+        // Event listener to refresh the featured quote
+        document.getElementById('refresh-button').addEventListener('click', () => {
+            displayFeaturedQuote(quotes);
+        });
     })
     .catch(error => console.error('Error loading quotes:', error));
 
-// Populate character dropdown
-function populateCharacterDropdown(quotes) {
-    const characterSelect = document.getElementById('character-select');
-    const uniqueCharacters = [...new Set(quotes.map(q => q.character))];
-    
-    uniqueCharacters.forEach(character => {
-        const option = document.createElement('option');
-        option.value = character;
-        option.textContent = character;
-        characterSelect.appendChild(option);
-    });
+// Display a random featured quote
+function displayFeaturedQuote(quotes) {
+    const container = document.getElementById('featured-quote-container');
+    container.innerHTML = ''; // Clear the current featured quote
 
-    characterSelect.addEventListener('change', (e) => {
-        const selectedCharacter = e.target.value;
-        if (selectedCharacter) {
-            window.location.href = `?character=${encodeURIComponent(selectedCharacter)}`;
-        }
-    });
+    // Get a random quote
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    const quoteDiv = createQuoteElement(randomQuote);
+    quoteDiv.classList.add('featured-quote'); // Add a class for styling the featured quote
+
+    container.appendChild(quoteDiv);
 }
 
-// Load random quotes on the main page
-function loadRandomQuotes(quotes) {
-    const container = document.getElementById('quote-container');
+// Display all quotes below the featured quote
+function displayAllQuotes(quotes) {
+    const container = document.getElementById('all-quotes-container');
     container.innerHTML = ''; // Clear existing quotes
 
-    const shuffledQuotes = quotes.sort(() => 0.5 - Math.random()).slice(0, 3);
-    shuffledQuotes.forEach(displayQuote);
+    quotes.forEach(quote => {
+        const quoteDiv = createQuoteElement(quote);
+        quoteDiv.classList.add('all-quote'); // Add a class for styling individual quotes
+        container.appendChild(quoteDiv);
+    });
 }
 
-// Load quotes by character and sort by season and episode
-function loadCharacterQuotes(character, quotes) {
-    const container = document.getElementById('quote-container');
-    container.innerHTML = `<h2>Quotes by ${character}</h2>`;
-
-    const characterQuotes = quotes
-        .filter(q => q.character === character)
-        .sort((a, b) => a.season - b.season || a.episode - b.episode);
-
-    characterQuotes.forEach(displayQuote);
-}
-
-// Display a quote
-function displayQuote(quote) {
-    const container = document.getElementById('quote-container');
+// Function to create and return a quote element
+function createQuoteElement(quote) {
     const quoteDiv = document.createElement('div');
-    quoteDiv.classList.add('quote-box');
+    quoteDiv.classList.add('quote-box'); // Add a general class for styling
 
     const img = document.createElement('img');
     img.src = `characters/${quote.character.toLowerCase().replace(/ /g, '_')}.png`;
@@ -81,11 +62,6 @@ function displayQuote(quote) {
 
     quoteDiv.appendChild(img);
     quoteDiv.appendChild(textContainer);
-    container.appendChild(quoteDiv);
+
+    return quoteDiv;
 }
-
-// Initial load of random quotes
-loadRandomQuotes();
-
-// Event listener for the refresh button
-document.getElementById('refresh-button').addEventListener('click', loadRandomQuotes);
