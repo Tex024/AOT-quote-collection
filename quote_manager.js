@@ -8,6 +8,7 @@ fetch('quotes.json')
         allQuotes = quotes;
         populateCharacterFilter(quotes);
         populateSeasonFilter(quotes);
+        populateEpisodeFilter(quotes)
         displayFeaturedQuote(getFilteredQuotes());
         displayAllQuotes(getFilteredQuotes());
 
@@ -49,11 +50,7 @@ function populateSeasonFilter(quotes) {
 // Handle filter changes
 function handleFilterChange() {
     const seasonSelect = document.getElementById('season-select').value;
-    if (seasonSelect) {
-        populateEpisodeFilter(seasonSelect);
-    } else {
-        resetEpisodeFilter();
-    }
+    seasonSelect || resetEpisodeFilter();
 
     displayFeaturedQuote(getFilteredQuotes());
     displayAllQuotes(getFilteredQuotes());
@@ -96,8 +93,8 @@ function getFilteredQuotes() {
 
     return allQuotes.filter(quote => {
         return (!character || quote.character === character) &&
-               (!season || quote.season === season) &&
-               (!episode || quote.episode === episode);
+               (!season || quote.season == season) &&
+               (!episode || quote.episode == episode);
     });
 }
 
