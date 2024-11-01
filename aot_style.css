@@ -5,14 +5,7 @@ body {
     color: #4b3f29;
     margin: 0;
     padding: 20px;
-    box-sizing: border-box; /* Include padding in width calculations */
-}
-
-h1, h2 {
-    color: #4b3f29;
-    text-align: center;
-    text-shadow: 2px 2px 5px #a39273;
-    margin: 10px 0; /* Add some margin for better spacing */
+    padding-top: 80px; /* Space at the top for title and button */
 }
 
 /* Language Toggle Button Style */
@@ -24,7 +17,7 @@ h1, h2 {
     color: #fdf7e5; /* Button text color */
     border: 1px solid #4b3f29; /* Button border */
     border-radius: 5px; /* Rounded corners */
-    position: absolute; /* Positioning for the upper right corner */
+    position: fixed; /* Keep it fixed */
     top: 20px; /* Distance from the top */
     right: 20px; /* Distance from the right */
     z-index: 1000; /* Ensure it stays on top of other elements */
@@ -34,10 +27,17 @@ h1, h2 {
     background-color: #a38967; /* Button hover color */
 }
 
-/* Filters Style */
+/* Title styling */
+h1, h2 {
+    color: #4b3f29;
+    text-align: center;
+    text-shadow: 2px 2px 5px #a39273;
+    margin-top: 0; /* Remove top margin */
+}
+
+/* Adjust Filters Style */
 .filters {
     display: flex; /* Use flexbox for horizontal layout */
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
     justify-content: center; /* Center the filters */
     align-items: center; /* Vertically align the items */
     margin: 20px 0; /* Add margin for spacing */
