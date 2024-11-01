@@ -28,24 +28,31 @@ function loadRandomQuotes() {
                 img.style.height = 'auto'; // Maintain aspect ratio
                 img.style.marginRight = '10px'; // Spacing between image and quote
 
-                // Quote text
+                // Quote text with quotation marks
                 const quoteText = document.createElement('p');
-                quoteText.textContent = `"${quote.quote}"`;
+                quoteText.textContent = `"${quote.quote}"`; // Add quotation marks
                 quoteText.style.fontSize = '1.5em'; // Increase font size for the quote
                 quoteText.style.margin = '0'; // Remove default margin
+                quoteText.style.fontStyle = 'italic'; // Italicize the quote
 
-                // Quote details (author, season, episode)
-                const detailsDiv = document.createElement('div');
+                // Quote details (author, season, episode) in a new div
+                const detailsDiv = document.createElement('p');
                 detailsDiv.style.fontSize = '0.8em'; // Smaller font size
-                detailsDiv.style.fontStyle = 'italic'; // Italicize the details
-                detailsDiv.style.marginTop = '5px'; // Margin on top
+                detailsDiv.style.margin = '5px 0 0 0'; // Margin on top
                 detailsDiv.textContent = `${quote.character} - Season ${quote.season}, Episode ${quote.episode}`;
 
+                // Create a container for quote text and details
+                const textContainer = document.createElement('div');
+                textContainer.style.flexGrow = '1'; // Allow this div to grow to fill the space
+                textContainer.style.marginLeft = '10px'; // Space between the image and text
+              
+                // Append quote text and details to the textContainer
+                textContainer.appendChild(quoteText);
+                textContainer.appendChild(detailsDiv);
 
-                // Append elements to the quoteDiv
+                // Append image and textContainer to the quoteDiv
                 quoteDiv.appendChild(img);
-                quoteDiv.appendChild(quoteText);
-                quoteDiv.appendChild(detailsDiv);
+                quoteDiv.appendChild(textContainer);
 
                 // Append the quoteDiv to the container
                 container.appendChild(quoteDiv);
