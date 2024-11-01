@@ -32,31 +32,25 @@ h1, h2 {
     background-color: #a38967; /* Button hover color */
 }
 
-/* Filters Container Styling */
+/* Filters Style */
 .filters {
-    display: flex;
-    flex-direction: column; /* Arrange filters in a column */
-    align-items: center; /* Center align the filters */
-    margin: 20px auto; /* Center the filters section */
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Center the filters */
+    align-items: center; /* Vertically align the items */
+    margin: 20px 0; /* Add margin for spacing */
 }
 
-/* Label Styling */
 .filters label {
-    color: #4b3f29; /* Label text color */
-    font-weight: bold; /* Bold text for labels */
-    margin-bottom: 5px; /* Space between label and select */
+    margin-right: 10px; /* Space between label and select */
+    font-weight: bold; /* Make labels bold for better visibility */
 }
 
-/* Dropdown (Select) Styling */
 .filters select {
-    background-color: #fdf7e5; /* Dropdown background color */
-    color: #4b3f29; /* Dropdown text color */
-    border: 1px solid #8c6d52; /* Border color for dropdown */
-    border-radius: 5px; /* Rounded corners for dropdown */
-    padding: 8px; /* Padding for dropdown */
-    font-size: 16px; /* Font size */
-    margin-bottom: 20px; /* Space between dropdowns */
-    width: 200px; /* Fixed width for dropdown */
+    margin-right: 20px; /* Space between dropdowns */
+    padding: 5px; /* Padding for better appearance */
+    border: 1px solid #8c6d52; /* Same border as the button */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fdf7e5; /* Background color to match theme */
 }
 
 /* Styling for the hover state of dropdowns */
