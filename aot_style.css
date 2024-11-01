@@ -5,19 +5,26 @@ body {
     color: #4b3f29;
     margin: 0;
     padding: 20px;
-    padding-top: 80px; /* Space at the top for title and button */
+    box-sizing: border-box; /* Include padding in width calculations */
+}
+
+h1, h2 {
+    color: #4b3f29;
+    text-align: center;
+    text-shadow: 2px 2px 5px #a39273;
+    margin: 10px 0; /* Add some margin for better spacing */
 }
 
 /* Language Toggle Button Style */
 #language-toggle {
-    padding: 10px 15px;
-    font-size: 16px;
+    padding: 5px 10px; /* Reduced padding for a smaller button */
+    font-size: 12px; /* Reduced font size */
     cursor: pointer;
     background-color: #8c6d52; /* Button background color */
     color: #fdf7e5; /* Button text color */
     border: 1px solid #4b3f29; /* Button border */
     border-radius: 5px; /* Rounded corners */
-    position: fixed; /* Keep it fixed */
+    position: absolute; /* Positioning for the upper right corner */
     top: 20px; /* Distance from the top */
     right: 20px; /* Distance from the right */
     z-index: 1000; /* Ensure it stays on top of other elements */
@@ -27,17 +34,10 @@ body {
     background-color: #a38967; /* Button hover color */
 }
 
-/* Title styling */
-h1, h2 {
-    color: #4b3f29;
-    text-align: center;
-    text-shadow: 2px 2px 5px #a39273;
-    margin-top: 0; /* Remove top margin */
-}
-
-/* Adjust Filters Style */
+/* Filters Style */
 .filters {
     display: flex; /* Use flexbox for horizontal layout */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
     justify-content: center; /* Center the filters */
     align-items: center; /* Vertically align the items */
     margin: 20px 0; /* Add margin for spacing */
@@ -141,6 +141,7 @@ h1, h2 {
 
     h1, h2 {
         font-size: 1.5em; /* Adjust font size for smaller screens */
+        margin-top: 40px; /* Create space at the top for the button */
     }
 
     /* Adjust Language Toggle Button Position */
