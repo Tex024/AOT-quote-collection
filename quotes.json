@@ -58,5 +58,29 @@
       "character": "Eren Jeager",
       "season": 1,
       "episode": 25
+    },
+    {
+      "quote": "Quote season 2 ep 2.",
+      "character": "Eren Jeager",
+      "season": 2,
+      "episode": 2
+    },
+    {
+      "quote": "Quote season 3 ep 1.",
+      "character": "Eren Jeager",
+      "season": 3,
+      "episode": 1
+    },
+    {
+      "quote": "Quote season 4 ep 13.",
+      "character": "Eren Jeager",
+      "season": 4,
+      "episode": 13
+    },
+    {
+      "quote": "Quote season 2 ep 12.",
+      "character": "Eren Jeager",
+      "season": 2,
+      "episode": 12
     }
   ]

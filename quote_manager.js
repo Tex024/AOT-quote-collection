@@ -1,3 +1,4 @@
+// All quotes data
 let allQuotes = [];
 
 // Fetch quotes from JSON and initialize the page
@@ -21,7 +22,7 @@ fetch('quotes.json')
     })
     .catch(error => console.error('Error loading quotes:', error));
 
-// Function to populate character filter
+// Populate character filter
 function populateCharacterFilter(quotes) {
     const characters = Array.from(new Set(quotes.map(quote => quote.character))).sort();
     const characterSelect = document.getElementById('character-select');
@@ -33,7 +34,7 @@ function populateCharacterFilter(quotes) {
     });
 }
 
-// Function to populate season filter
+// Populate season filter
 function populateSeasonFilter(quotes) {
     const seasons = Array.from(new Set(quotes.map(quote => quote.season))).sort((a, b) => a - b);
     const seasonSelect = document.getElementById('season-select');
@@ -45,7 +46,7 @@ function populateSeasonFilter(quotes) {
     });
 }
 
-// Handle filter change
+// Handle filter changes
 function handleFilterChange() {
     const seasonSelect = document.getElementById('season-select').value;
     if (seasonSelect) {
@@ -58,7 +59,7 @@ function handleFilterChange() {
     displayAllQuotes(getFilteredQuotes());
 }
 
-// Populate episode filter based on selected season
+// Populate episode filter based on the selected season
 function populateEpisodeFilter(season) {
     const episodeSelect = document.getElementById('episode-select');
     const episodeLabel = document.getElementById('episode-label');
@@ -66,6 +67,7 @@ function populateEpisodeFilter(season) {
     episodeLabel.style.display = 'inline';
     episodeSelect.style.display = 'inline';
 
+    // Get unique episodes for the selected season
     const episodes = Array.from(new Set(allQuotes
         .filter(quote => quote.season == season)
         .map(quote => quote.episode)))
@@ -124,7 +126,7 @@ function displayAllQuotes(filteredQuotes) {
     });
 }
 
-// Function to create and return a quote element
+// Create and return a quote element
 function createQuoteElement(quote) {
     const quoteDiv = document.createElement('div');
     quoteDiv.classList.add('quote-box');
