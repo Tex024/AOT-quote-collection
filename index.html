@@ -5,44 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="aot_style.css">
     <script src="quote_manager.js" charset="utf-8" defer></script>
-    <title>Attack on Titan Quotes</title>
+    <title data-en="Attack on Titan Quotes" data-it="Citazioni di Attack on Titan">Attack on Titan Quotes</title>
 </head>
 <body>
 
-    <h1>Attack on Titan Quotes</h1>
-
-    <button id="language-toggle" style="position: absolute; top: 20px; right: 20px;">
-        ENG
-    </button>
+    <h1 data-en="Attack on Titan Quotes" data-it="Citazioni di Attack on Titan">Attack on Titan Quotes</h1>
 
     <!-- Button to show a different quote in the featured area -->
-    <button id="refresh-button">Random Quote</button>
-
-    <!-- Featured Quote Section -->
-    <section id="featured-quote-container">
-        <!-- The main quote will be displayed here by JavaScript -->
-    </section>
+    <button id="refresh-button" data-en="Random Quote" data-it="Citazione Casuale">Random Quote</button>
 
     <!-- Filter Options -->
     <div class="filters">
-        <label for="character-select">Character:</label>
+        <label for="character-select" data-en="Character:" data-it="Personaggio:">Character:</label>
         <select id="character-select">
             <option value="">None</option>
             <!-- Characters will be added here dynamically -->
         </select>
 
-        <label for="season-select">Season:</label>
+        <label for="season-select" data-en="Season:" data-it="Stagione:">Season:</label>
         <select id="season-select">
             <option value="">None</option>
             <!-- Seasons will be added dynamically -->
         </select>
     </div>
 
+    <!-- Featured Quote Section -->
+    <section id="featured-quote-container">
+        <!-- The main quote will be displayed here by JavaScript -->
+    </section>
+
     <!-- All Quotes Section -->
-    <h2>All Quotes</h2>
+    <h2 data-en="Quotes" data-it="Citazioni">Quotes</h2>
     <section id="all-quotes-container">
         <!-- All filtered quotes will be displayed here by JavaScript -->
     </section>
+
+    <!-- Language Toggle Button -->
+    <button id="language-toggle" data-en="ENG" data-it="ITA">ENG</button>
 
 </body>
 </html>

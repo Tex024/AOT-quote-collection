@@ -1,6 +1,5 @@
-// All quotes data 
 let allQuotes = [];
-let isItalian = false; // Track the current language state
+let currentLanguage = 'en'; // Default language is English
 
 // Fetch quotes from JSON and initialize the page
 fetch('quotes.json')
@@ -19,20 +18,11 @@ fetch('quotes.json')
         // Event listeners for filtering
         document.getElementById('character-select').addEventListener('change', handleFilterChange);
         document.getElementById('season-select').addEventListener('change', handleFilterChange);
-
-        // Language toggle button event listener
+        
+        // Language toggle event
         document.getElementById('language-toggle').addEventListener('click', toggleLanguage);
     })
     .catch(error => console.error('Error loading quotes:', error));
-
-// Function to toggle the language
-function toggleLanguage() {
-    isItalian = !isItalian; // Toggle language state
-    const toggleButton = document.getElementById('language-toggle');
-    toggleButton.textContent = isItalian ? 'ENG' : 'ITA'; // Update button text
-    displayFeaturedQuote(getFilteredQuotes()); // Refresh displayed quotes
-    displayAllQuotes(getFilteredQuotes()); // Refresh all quotes displayed
-}
 
 // Populate character filter
 function populateCharacterFilter(quotes) {
@@ -72,12 +62,8 @@ function getFilteredQuotes() {
     return allQuotes.filter(quote => {
         return (!character || quote.character === character) &&
                (!season || quote.season == season);
-    }).map(quote => {
-        // Return the appropriate quote based on the language
-        return isItalian ? { ...quote, quote: quote.ita_quote } : quote;
     });
 }
-
 
 // Display a random featured quote
 function displayFeaturedQuote(filteredQuotes) {
@@ -125,7 +111,7 @@ function createQuoteElement(quote) {
     img.style.marginRight = '10px';
 
     const quoteText = document.createElement('p');
-    quoteText.textContent = `"${quote.quote}"`;
+    quoteText.textContent = `"${currentLanguage === 'en' ? quote.quote : quote.quote_it}"`;
     quoteText.style.fontStyle = 'italic';
 
     const detailsDiv = document.createElement('p');
@@ -140,4 +126,20 @@ function createQuoteElement(quote) {
     quoteDiv.appendChild(textContainer);
 
     return quoteDiv;
+}
+
+// Toggle between English and Italian languages
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'en' ? 'it' : 'en';
+    updateLanguageText();
+    displayFeaturedQuote(getFilteredQuotes());
+    displayAllQuotes(getFilteredQuotes());
+}
+
+// Update text based on the selected language
+function updateLanguageText() {
+    const elementsToTranslate = document.querySelectorAll('[data-en], [data-it]');
+    elementsToTranslate.forEach(el => {
+        el.textContent = el.getAttribute(`data-${currentLanguage}`);
+    });
 }
