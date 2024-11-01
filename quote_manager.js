@@ -96,8 +96,8 @@ function getFilteredQuotes() {
 
     return allQuotes.filter(quote => {
         return (!character || quote.character === character) &&
-               (!season || quote.season == season) &&
-               (!episode || quote.episode == episode);
+               (!season || quote.season === season) &&
+               (!episode || quote.episode === episode);
     });
 }
 
