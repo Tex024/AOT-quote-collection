@@ -8,18 +8,13 @@ fetch('quotes.json')
         allQuotes = quotes;
         populateCharacterFilter(quotes);
         populateSeasonFilter(quotes);
-        populateEpisodeFilter(quotes)
-        displayFeaturedQuote(getFilteredQuotes());
-        displayAllQuotes(getFilteredQuotes());
+        displayFeaturedQuote();
+        displayAllQuotes();
 
-        document.getElementById('refresh-button').addEventListener('click', () => {
-            displayFeaturedQuote(getFilteredQuotes());
-        });
-
-        // Event listeners for filtering
-        document.getElementById('character-select').addEventListener('change', handleFilterChange);
-        document.getElementById('season-select').addEventListener('change', handleFilterChange);
-        document.getElementById('episode-select').addEventListener('change', handleFilterChange);
+        document.getElementById('refresh-button').addEventListener('click', displayFeaturedQuote);
+        document.getElementById('character-select').addEventListener('change', updateQuotes);
+        document.getElementById('season-select').addEventListener('change', updateQuotes);
+        document.getElementById('episode-select').addEventListener('change', updateQuotes);
     })
     .catch(error => console.error('Error loading quotes:', error));
 
@@ -27,6 +22,7 @@ fetch('quotes.json')
 function populateCharacterFilter(quotes) {
     const characters = Array.from(new Set(quotes.map(quote => quote.character))).sort();
     const characterSelect = document.getElementById('character-select');
+    characterSelect.innerHTML = '<option value="">None</option>'; // Add a "None" option
     characters.forEach(character => {
         const option = document.createElement('option');
         option.value = character;
@@ -39,6 +35,7 @@ function populateCharacterFilter(quotes) {
 function populateSeasonFilter(quotes) {
     const seasons = Array.from(new Set(quotes.map(quote => quote.season))).sort((a, b) => a - b);
     const seasonSelect = document.getElementById('season-select');
+    seasonSelect.innerHTML = '<option value="">None</option>'; // Add a "None" option
     seasons.forEach(season => {
         const option = document.createElement('option');
         option.value = season;
@@ -47,42 +44,11 @@ function populateSeasonFilter(quotes) {
     });
 }
 
-// Handle filter changes
-function handleFilterChange() {
-    const seasonSelect = document.getElementById('season-select').value;
-    seasonSelect || resetEpisodeFilter();
-
-    displayFeaturedQuote(getFilteredQuotes());
-    displayAllQuotes(getFilteredQuotes());
-}
-
-// Populate episode filter based on the selected season
-function populateEpisodeFilter(season) {
-    const episodeSelect = document.getElementById('episode-select');
-    const episodeLabel = document.getElementById('episode-label');
-    episodeSelect.innerHTML = '<option value="">None</option>'; // Reset episodes
-    episodeLabel.style.display = 'inline';
-    episodeSelect.style.display = 'inline';
-
-    // Get unique episodes for the selected season
-    const episodes = Array.from(new Set(allQuotes
-        .filter(quote => quote.season == season)
-        .map(quote => quote.episode)))
-        .sort((a, b) => a - b);
-
-    episodes.forEach(episode => {
-        const option = document.createElement('option');
-        option.value = episode;
-        option.textContent = `Episode ${episode}`;
-        episodeSelect.appendChild(option);
-    });
-}
-
-// Reset episode filter when no season is selected
-function resetEpisodeFilter() {
-    document.getElementById('episode-select').innerHTML = '<option value="">None</option>';
-    document.getElementById('episode-label').style.display = 'none';
-    document.getElementById('episode-select').style.display = 'none';
+// Update quotes based on current filters
+function updateQuotes() {
+    const filteredQuotes = getFilteredQuotes();
+    displayFeaturedQuote(filteredQuotes);
+    displayAllQuotes(filteredQuotes);
 }
 
 // Get filtered quotes based on character, season, and episode
@@ -99,12 +65,13 @@ function getFilteredQuotes() {
 }
 
 // Display a random featured quote
-function displayFeaturedQuote(filteredQuotes) {
+function displayFeaturedQuote(filteredQuotes = allQuotes) {
     const container = document.getElementById('featured-quote-container');
     container.innerHTML = '';
 
-    if (filteredQuotes.length > 0) {
-        const randomQuote = filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)];
+    const applicableQuotes = getFilteredQuotes();
+    if (applicableQuotes.length > 0) {
+        const randomQuote = applicableQuotes[Math.floor(Math.random() * applicableQuotes.length)];
         const quoteDiv = createQuoteElement(randomQuote);
         quoteDiv.classList.add('featured-quote');
         container.appendChild(quoteDiv);
@@ -112,11 +79,12 @@ function displayFeaturedQuote(filteredQuotes) {
 }
 
 // Display all quotes below the featured quote
-function displayAllQuotes(filteredQuotes) {
+function displayAllQuotes(filteredQuotes = allQuotes) {
     const container = document.getElementById('all-quotes-container');
     container.innerHTML = '';
 
-    filteredQuotes.forEach(quote => {
+    const applicableQuotes = getFilteredQuotes();
+    applicableQuotes.forEach(quote => {
         const quoteDiv = createQuoteElement(quote);
         quoteDiv.classList.add('all-quote');
         container.appendChild(quoteDiv);
