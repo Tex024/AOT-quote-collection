@@ -1,66 +1,87 @@
-function loadRandomQuotes() {
-    fetch('quotes.json')
-        .then(response => response.json())
-        .then(quotes => {
-            const container = document.getElementById('quote-container');
-            container.innerHTML = ''; // Clear existing quotes
+// Fetch quotes and characters from JSON
+fetch('quotes.json')
+    .then(response => response.json())
+    .then(quotes => {
+        populateCharacterDropdown(quotes);
+        loadRandomQuotes(quotes);
+        
+        // Check for a character query in the URL
+        const params = new URLSearchParams(window.location.search);
+        const character = params.get('character');
+        if (character) {
+            loadCharacterQuotes(character, quotes);
+        }
+    })
+    .catch(error => console.error('Error loading quotes:', error));
 
-            // Randomly shuffle the array of quotes
-            const shuffledQuotes = quotes.sort(() => 0.5 - Math.random());
+// Populate character dropdown
+function populateCharacterDropdown(quotes) {
+    const characterSelect = document.getElementById('character-select');
+    const uniqueCharacters = [...new Set(quotes.map(q => q.character))];
+    
+    uniqueCharacters.forEach(character => {
+        const option = document.createElement('option');
+        option.value = character;
+        option.textContent = character;
+        characterSelect.appendChild(option);
+    });
 
-            // Get up to 10 quotes from the shuffled list
-            const randomQuotes = shuffledQuotes.slice(0, 3);
+    characterSelect.addEventListener('change', (e) => {
+        const selectedCharacter = e.target.value;
+        if (selectedCharacter) {
+            window.location.href = `?character=${encodeURIComponent(selectedCharacter)}`;
+        }
+    });
+}
 
-            // Display each quote
-            randomQuotes.forEach(quote => {
-                const quoteDiv = document.createElement('div');
-                quoteDiv.style.marginBottom = '20px';
-                quoteDiv.style.borderLeft = '4px solid #ff5733'; // Color for the border
-                quoteDiv.style.paddingLeft = '10px';
-                quoteDiv.style.display = 'flex'; // Use flexbox for layout
-                quoteDiv.style.alignItems = 'flex-start'; // Align items at the top
+// Load random quotes on the main page
+function loadRandomQuotes(quotes) {
+    const container = document.getElementById('quote-container');
+    container.innerHTML = ''; // Clear existing quotes
 
-                // Create an image element for the character picture
-                const img = document.createElement('img');
-                img.src = `characters/${quote.character.toLowerCase().replace(/ /g, '_')}.png`; // Assuming images are named in lowercase and with underscores
-                img.alt = quote.character;
-                img.style.width = '50px'; // Set a fixed size for character image
-                img.style.height = 'auto'; // Maintain aspect ratio
-                img.style.marginRight = '10px'; // Spacing between image and quote
+    const shuffledQuotes = quotes.sort(() => 0.5 - Math.random()).slice(0, 3);
+    shuffledQuotes.forEach(displayQuote);
+}
 
-                // Quote text with quotation marks
-                const quoteText = document.createElement('p');
-                quoteText.textContent = `"${quote.quote}"`; // Add quotation marks
-                quoteText.style.fontSize = '1.5em'; // Increase font size for the quote
-                quoteText.style.margin = '0'; // Remove default margin
-                quoteText.style.fontStyle = 'italic'; // Italicize the quote
+// Load quotes by character and sort by season and episode
+function loadCharacterQuotes(character, quotes) {
+    const container = document.getElementById('quote-container');
+    container.innerHTML = `<h2>Quotes by ${character}</h2>`;
 
-                // Quote details (author, season, episode) in a new div
-                const detailsDiv = document.createElement('p');
-                detailsDiv.style.fontSize = '0.8em'; // Smaller font size
-                detailsDiv.style.margin = '5px 0 0 0'; // Margin on top
-                detailsDiv.textContent = `${quote.character} - Season ${quote.season}, Episode ${quote.episode}`;
+    const characterQuotes = quotes
+        .filter(q => q.character === character)
+        .sort((a, b) => a.season - b.season || a.episode - b.episode);
 
-                // Create a container for quote text and details
-                const textContainer = document.createElement('div');
-                textContainer.style.flexGrow = '1'; // Allow this div to grow to fill the space
-                textContainer.style.marginLeft = '10px'; // Space between the image and text
-              
-                // Append quote text and details to the textContainer
-                textContainer.appendChild(quoteText);
-                textContainer.appendChild(detailsDiv);
+    characterQuotes.forEach(displayQuote);
+}
 
-                // Append image and textContainer to the quoteDiv
-                quoteDiv.appendChild(img);
-                quoteDiv.appendChild(textContainer);
+// Display a quote
+function displayQuote(quote) {
+    const container = document.getElementById('quote-container');
+    const quoteDiv = document.createElement('div');
+    quoteDiv.classList.add('quote-box');
 
-                // Append the quoteDiv to the container
-                container.appendChild(quoteDiv);
-            });
-        })
-        .catch(error => {
-            console.error('Error loading quotes:', error);
-        });
+    const img = document.createElement('img');
+    img.src = `characters/${quote.character.toLowerCase().replace(/ /g, '_')}.png`;
+    img.alt = quote.character;
+    img.style.width = '50px';
+    img.style.marginRight = '10px';
+
+    const quoteText = document.createElement('p');
+    quoteText.textContent = `"${quote.quote}"`;
+    quoteText.style.fontStyle = 'italic';
+
+    const detailsDiv = document.createElement('p');
+    detailsDiv.textContent = `${quote.character} - Season ${quote.season}, Episode ${quote.episode}`;
+    detailsDiv.style.fontSize = '0.8em';
+
+    const textContainer = document.createElement('div');
+    textContainer.appendChild(quoteText);
+    textContainer.appendChild(detailsDiv);
+
+    quoteDiv.appendChild(img);
+    quoteDiv.appendChild(textContainer);
+    container.appendChild(quoteDiv);
 }
 
 // Initial load of random quotes

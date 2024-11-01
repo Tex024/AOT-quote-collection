@@ -1,46 +1,59 @@
-/* Dark Background and Light Text */
+/* aot_style.css - Medieval Parchment Style with Separate Quote Boxes */
 body {
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-    font-family: Arial, sans-serif;
+    font-family: 'Cinzel', serif; /* Medieval-style font */
+    background-color: #f5f0e1; /* Parchment background */
+    color: #4b3f29;
     margin: 0;
     padding: 20px;
 }
 
 h1, h2 {
-    color: #ff5733; /* Fiery orange-red, a nod to conflict and energy */
-    text-shadow: 2px 2px 4px #000;
+    color: #4b3f29;
+    text-align: center;
+    text-shadow: 2px 2px 5px #a39273;
 }
 
 #quote-container {
-    padding: 20px;
-    background-color: #333;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-}
-
-div#quote-container > div {
-    margin-bottom: 15px;
-    border-left: 4px solid #ff5733;
-    padding-left: 10px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 button {
-    background-color: #ff5733;
-    color: #e0e0e0;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    background-color: #8c6d52;
+    color: #fdf7e5;
+    border: 1px solid #4b3f29;
+    padding: 8px 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 16px;
+    border-radius: 4px;
+    display: block;
+    margin: 20px auto;
+    font-weight: bold;
 }
 
 button:hover {
-    background-color: #ff4530;
+    background-color: #a38967;
 }
 
-hr {
-    border: none;
-    height: 1px;
-    background-color: #555;
+#quote-container > div {
+    background-color: #fdf7e5;
+    border: 1px solid #8c6d52;
+    border-left: 4px solid #8c6d52;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+/* Style for individual quote boxes */
+.quote-box {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #d4af37; /* Customize this color based on the chosen theme */
+    margin-bottom: 10px;
+    background-color: #fdf7e5; /* Customize as needed */
+    border-radius: 5px;
 }
