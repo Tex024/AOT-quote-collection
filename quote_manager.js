@@ -1,5 +1,6 @@
 // All quotes data 
 let allQuotes = [];
+let isItalian = false; // Track the current language state
 
 // Fetch quotes from JSON and initialize the page
 fetch('quotes.json')
@@ -18,8 +19,20 @@ fetch('quotes.json')
         // Event listeners for filtering
         document.getElementById('character-select').addEventListener('change', handleFilterChange);
         document.getElementById('season-select').addEventListener('change', handleFilterChange);
+
+        // Language toggle button event listener
+        document.getElementById('language-toggle').addEventListener('click', toggleLanguage);
     })
     .catch(error => console.error('Error loading quotes:', error));
+
+// Function to toggle the language
+function toggleLanguage() {
+    isItalian = !isItalian; // Toggle language state
+    const toggleButton = document.getElementById('language-toggle');
+    toggleButton.textContent = isItalian ? 'ENG' : 'ITA'; // Update button text
+    displayFeaturedQuote(getFilteredQuotes()); // Refresh displayed quotes
+    displayAllQuotes(getFilteredQuotes()); // Refresh all quotes displayed
+}
 
 // Populate character filter
 function populateCharacterFilter(quotes) {
@@ -59,8 +72,12 @@ function getFilteredQuotes() {
     return allQuotes.filter(quote => {
         return (!character || quote.character === character) &&
                (!season || quote.season == season);
+    }).map(quote => {
+        // Return the appropriate quote based on the language
+        return isItalian ? { ...quote, quote: quote.ita_quote } : quote;
     });
 }
+
 
 // Display a random featured quote
 function displayFeaturedQuote(filteredQuotes) {
