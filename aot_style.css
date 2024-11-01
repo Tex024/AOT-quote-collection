@@ -5,20 +5,18 @@ body {
     color: #4b3f29;
     margin: 0;
     padding: 20px;
-    box-sizing: border-box; /* Include padding in width calculations */
 }
 
 h1, h2 {
     color: #4b3f29;
     text-align: center;
     text-shadow: 2px 2px 5px #a39273;
-    margin: 10px 0; /* Add some margin for better spacing */
 }
 
 /* Language Toggle Button Style */
 #language-toggle {
-    padding: 5px 10px; /* Reduced padding for a smaller button */
-    font-size: 12px; /* Reduced font size */
+    padding: 10px 15px;
+    font-size: 16px;
     cursor: pointer;
     background-color: #8c6d52; /* Button background color */
     color: #fdf7e5; /* Button text color */
@@ -48,13 +46,16 @@ h1, h2 {
 }
 
 .filters select {
-    margin: 5px; /* Space between dropdowns */
+    margin-right: 20px; /* Space between dropdowns */
     padding: 5px; /* Padding for better appearance */
     border: 1px solid #8c6d52; /* Same border as the button */
     border-radius: 5px; /* Rounded corners */
     background-color: #fdf7e5; /* Background color to match theme */
-    flex: 1; /* Allow dropdowns to grow */
-    min-width: 150px; /* Minimum width to prevent them from being too narrow */
+}
+
+/* Styling for the hover state of dropdowns */
+.filters select:hover {
+    border-color: #a38967; /* Change border color on hover */
 }
 
 /* Refresh Button Style */
@@ -79,7 +80,7 @@ h1, h2 {
     display: flex;
     justify-content: center;
     margin: 20px auto;
-    width: 90%; /* Reduce width for mobile */
+    width: 80%;
 }
 
 .featured-quote {
@@ -102,7 +103,6 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%; /* Reduce width for mobile */
 }
 
 .all-quote {
@@ -112,7 +112,7 @@ h1, h2 {
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 5px; /* Rounded corners */
-    width: 100%; /* Width of quotes */
+    width: 80%; /* Width of quotes */
     max-width: 800px; /* Max width of quotes */
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for quotes */
 }
@@ -121,7 +121,6 @@ h1, h2 {
 .quote-box {
     display: flex;
     align-items: flex-start; /* Align items at the start */
-    flex-direction: row; /* Default to row for larger screens */
 }
 
 /* Styling for images in quotes */
@@ -130,71 +129,4 @@ h1, h2 {
     width: 50px; /* Fixed size for character image */
     height: auto; /* Maintain aspect ratio */
     margin-right: 10px; /* Spacing between image and quote */
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    body {
-        padding: 10px; /* Reduce padding for smaller screens */
-    }
-
-    h1, h2 {
-        font-size: 1.5em; /* Adjust font size for smaller screens */
-        margin-top: 40px; /* Create space at the top for the button */
-    }
-
-    /* Adjust Language Toggle Button Position */
-    #language-toggle {
-        position: fixed; /* Make it fixed so it doesn't overlap */
-        top: 10px; /* Adjust position */
-        right: 10px; /* Adjust position */
-    }
-
-    /* Filters Style */
-    .filters {
-        flex-direction: column; /* Stack dropdowns vertically */
-        align-items: stretch; /* Stretch to full width */
-        width: 100%; /* Full width */
-    }
-
-    .filters label {
-        margin-right: 0; /* Remove right margin */
-        margin-bottom: 5px; /* Add space below labels */
-    }
-
-    .filters select {
-        width: 100%; /* Make dropdowns full width */
-        margin-bottom: 10px; /* Space between dropdowns */
-    }
-
-    /* Featured Quote Container */
-    #featured-quote-container {
-        width: 100%; /* Full width on mobile */
-    }
-
-    .featured-quote {
-        max-width: 100%; /* Remove max width for mobile */
-        font-size: 1em; /* Adjust font size */
-    }
-
-    /* All Quotes Container */
-    #all-quotes-container {
-        width: 100%; /* Full width on mobile */
-    }
-
-    .all-quote {
-        width: 100%; /* Full width for all quotes */
-        padding: 10px; /* Reduce padding */
-    }
-
-    /* General quote box styling */
-    .quote-box {
-        flex-direction: column; /* Stack image and text */
-        align-items: flex-start; /* Align items to the left */
-    }
-
-    .quote-box img {
-        width: 40px; /* Smaller image size for mobile */
-        margin-bottom: 10px; /* Space below image */
-    }
 }
