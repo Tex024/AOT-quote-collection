@@ -13,36 +13,75 @@ h1, h2 {
     text-shadow: 2px 2px 5px #a39273;
 }
 
-#quote-container {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-button {
-    background-color: #8c6d52;
-    color: #fdf7e5;
-    border: 1px solid #4b3f29;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
+/* Refresh Button Style */
+#refresh-button {
     display: block;
     margin: 20px auto;
-    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #8c6d52; /* Button background color */
+    color: #fdf7e5; /* Button text color */
+    border: 1px solid #4b3f29; /* Button border */
+    border-radius: 5px; /* Rounded corners */
 }
 
-button:hover {
-    background-color: #a38967;
+#refresh-button:hover {
+    background-color: #a38967; /* Button hover color */
 }
 
-#quote-container > div {
-    background-color: #fdf7e5;
-    border: 1px solid #8c6d52;
-    border-left: 4px solid #8c6d52;
+/* Styling for the featured quote section */
+#featured-quote-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.featured-quote {
+    background-color: #ffe6b3; /* Featured quote background */
+    color: #333;
+    border: 2px solid #ffcc66; /* Featured quote border */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    font-size: 1.2em;
+}
+
+/* Styling for the all quotes section */
+#all-quotes-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all-quote {
+    background-color: #fdf7e5; /* All quote background */
+    border: 1px solid #8c6d52; /* All quote border */
+    border-left: 4px solid #8c6d52; /* Left border color */
     padding: 15px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
+    border-radius: 5px; /* Rounded corners */
+    width: 80%; /* Width of quotes */
+    max-width: 800px; /* Max width of quotes */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for quotes */
+}
+
+/* General quote box styling */
+.quote-box {
+    display: flex;
+    align-items: flex-start; /* Align items at the start */
+}
+
+/* Styling for images in quotes */
+.quote-box img {
+    border-radius: 5px; /* Rounded corners for images */
+    width: 50px; /* Fixed size for character image */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Spacing between image and quote */
 }
