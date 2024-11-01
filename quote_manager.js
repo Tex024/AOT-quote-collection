@@ -1,4 +1,4 @@
-// All quotes data
+// All quotes data 
 let allQuotes = [];
 
 // Fetch quotes from JSON and initialize the page
@@ -51,13 +51,7 @@ function handleFilterChange() {
     displayAllQuotes(getFilteredQuotes());
 }
 
-// Reset episode filter when no season is selected
-function resetEpisodeFilter() {
-    document.getElementById('episode-select').innerHTML = '<option value="">None</option>';
-    document.getElementById('episode-label').style.display = 'none';
-}
-
-// Get filtered quotes based on character, season, and episode
+// Get filtered quotes based on character, season
 function getFilteredQuotes() {
     const character = document.getElementById('character-select').value;
     const season = document.getElementById('season-select').value;
@@ -86,7 +80,16 @@ function displayAllQuotes(filteredQuotes) {
     const container = document.getElementById('all-quotes-container');
     container.innerHTML = '';
 
-    filteredQuotes.forEach(quote => {
+    // Sort quotes by season and episode before displaying
+    const sortedQuotes = filteredQuotes.sort((a, b) => {
+        if (a.season !== b.season) {
+            return a.season - b.season; // Sort by season first
+        } else {
+            return a.episode - b.episode; // Sort by episode if seasons are the same
+        }
+    });
+
+    sortedQuotes.forEach(quote => {
         const quoteDiv = createQuoteElement(quote);
         quoteDiv.classList.add('all-quote');
         container.appendChild(quoteDiv);
