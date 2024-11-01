@@ -22,7 +22,7 @@ function loadRandomQuotes() {
 
                 // Create an image element for the character picture
                 const img = document.createElement('img');
-                img.src = `./characters/${quote.character.toLowerCase().replace(/ /g, '_')}.png`; // Assuming images are named in lowercase and with underscores
+                img.src = `characters/${quote.character.toLowerCase().replace(/ /g, '_')}.png`; // Assuming images are named in lowercase and with underscores
                 img.alt = quote.character;
                 img.style.width = '50px'; // Set a fixed size for character image
                 img.style.height = 'auto'; // Maintain aspect ratio
