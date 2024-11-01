@@ -6,9 +6,6 @@
     <link rel="stylesheet" href="aot_style.css">
     <script src="quote_manager.js" charset="utf-8" defer></script>
     <title>Attack on Titan Quotes</title>
-    <meta http-equiv='cache-control' content='no-cache'> 
-    <meta http-equiv='expires' content='0'> 
-    <meta http-equiv='pragma' content='no-cache'>
 </head>
 <body>
 
@@ -17,6 +14,28 @@
 
     <!-- Button to show a different quote in the featured area -->
     <button id="refresh-button">Show Different Quote</button>
+
+    <!-- Filter Options -->
+    <div class="filters">
+        <label for="character-select">Character:</label>
+        <select id="character-select">
+            <option value="">None</option>
+            <!-- Characters will be added here dynamically -->
+        </select>
+
+        <label for="season-select">Season:</label>
+        <select id="season-select">
+            <option value="">None</option>
+            <!-- Seasons will be added dynamically -->
+        </select>
+
+        <!-- Episode selector, displayed only when a season is selected -->
+        <label for="episode-select" id="episode-label" style="display: none;">Episode:</label>
+        <select id="episode-select" style="display: none;">
+            <option value="">None</option>
+            <!-- Episodes will be added dynamically -->
+        </select>
+    </div>
 
     <!-- Featured Quote Section -->
     <section id="featured-quote-container">
@@ -28,5 +47,6 @@
     <section id="all-quotes-container">
         <!-- All quotes will be displayed here by JavaScript -->
     </section>
+
 </body>
 </html>
