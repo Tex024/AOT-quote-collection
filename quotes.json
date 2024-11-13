@@ -1,8 +1,15 @@
 [
     {
-      "quote": "When people see soldiers fighting, they know something bad happened. Everyone’s much happier when we’re doing nothing and getting called useless freeloaders.",
+      "quote": "When people see soldiers fighting, they know something bad happened. Everyone’s much happier when we’re doing nothing and getting called useless freeloaders",
       "quote_it": "...",
       "character": "Hannes",
+      "season": 1,
+      "episode": 1
+    },
+    {
+      "quote": "Nothing can suppress a human’s curiosity",
+      "quote_it": "...",
+      "character": "Grisha Jeager",
       "season": 1,
       "episode": 1
     },
